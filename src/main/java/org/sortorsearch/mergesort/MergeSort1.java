@@ -13,28 +13,30 @@ public class MergeSort1 {
     }
 
     private static void merge(int[] arr, int left, int mid, int right) {
-        int p =left, q = mid + 1, k = 0;
+        int i = left;
+        int j = mid + 1;
+        int k = 0;
         int[] temp = new int[right - left + 1];
-        while (p <= mid && q <= right) {
-            if (arr[p] <= arr[q]) {
-                temp[k++] = arr[p++];
+        while (i <= mid && j <= right) {
+            if (arr[i] > arr[j]) {
+                temp[k++] = arr[j++];
             } else {
-                temp[k++] = arr[q++];
+                temp[k++] = arr[i++];
             }
         }
 
-        while (p <= mid) {
-            temp[k++] = arr[p++];
+        while (i <= mid) {
+            temp[k++] = arr[i++];
         }
 
-        while (q <= right) {
-            temp[k++] = arr[q++];
+        while (j <= right) {
+            temp[k++] = arr[j++];
         }
-
-        for (q = 0; q <= right - left; q++) {
-            arr[q + left] = temp[q];
+        for (i = 0; i < temp.length; i++) {
+            arr[left + i] = temp[i];
         }
     }
+
 
     public static void main(String[] args) {
 
